@@ -32,13 +32,12 @@
     </div>
     <div class="col-xl-3 col-sm-6 mb-3">
       <div class="card text-white bg-success o-hidden h-100">
-      	<div class="card-header text-white  z-1" href="#">
-          <span class="float-left">Khách hàng mua nhiều nhất</span>
+        <div class="card-header text-white  z-1" href="#">
+          <span class="float-left">Khách mua nhiều nhất</span>
         </div>
         <div class="card-body">
-          <div class="mr-5">Tony Nguyễn</div>
+          <div class="mr-5">Tony Trần</div>
         </div>
-        </a>
       </div>
     </div>
     <div class="col-xl-3 col-sm-6 mb-3">

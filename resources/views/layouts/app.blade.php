@@ -7,9 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
+    <title>Đại lý Hùng Chính</title>
     <title>{{ config('app.name', 'Laravel') }}</title>
     <base href="{{asset('')}}">
     <!-- Bootstrap core CSS-->
@@ -32,7 +30,7 @@
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-      <a class="navbar-brand mr-1" href="index.html">Đại lý Hùng Chính</a>
+      <a class="navbar-brand mr-1" href="">Đại lý Hùng Chính</a>
       <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
       </button>
@@ -69,34 +67,39 @@
     <div id="wrapper">
         <!-- menu -->
       <ul class="sidebar navbar-nav">
-         <!-- chuyển về trang chủ -->
+         <!-- chuyển đến trang chủ -->
         <li class="nav-item active">
           <a class="nav-link" href="">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
           </a>
         </li>
+        <!-- chuyển đên trang chủ -->
         <li class="nav-item active">
-          <a class="nav-link" href="">
+          <a class="nav-link" href="{{ URL::route('category.index') }}">
             <i class="fas fa-book-open"></i>
             <span>Danh mục</span></a>
         </li>
+        <!-- chuyển đên hàng hóa -->
         <li class="nav-item active">
-          <a class="nav-link" href="">
+          <a class="nav-link" href="/product">
             <i class="fas fa-shopping-cart"></i>
             <span>Hàng hóa</span>
           </a>
         </li>
+        <!-- chuyển đên khách hàng -->
         <li class="nav-item active">
-          <a class="nav-link" href="">
+          <a class="nav-link" href="{{ URL::route('customer.index') }}">
             <i class="fas fa-users"></i>
             <span>Khách hàng</span></a>
         </li>
+        <!-- chuyển đên hóa đơn -->
         <li class="nav-item active">
-          <a class="nav-link" href="">
+          <a class="nav-link" href="{{ URL::route('order.index') }}">
             <i class="fas fa-file-invoice-dollar"></i>
             <span>Hóa đơn</span></a>
         </li>
+        <!-- đăng xuất làm tạm -->
         <li class="nav-item active">
             <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal"
             onclick="event.preventDefault();
@@ -136,7 +139,7 @@
         <footer class="sticky-footer">
           <div class="container my-auto">
             <div class="copyright text-center my-auto">
-              <span>Copyright © TrungTran 2019</span>
+              <span>Copyright © TrungTran {{date("Y")}}</span>
             </div>
           </div>
         </footer>
