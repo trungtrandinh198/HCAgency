@@ -1,6 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+<ol class="breadcrumb">
+    <li >
+        <a href="#">Danh mục</a>
+    </li>
+    <div class="form-inline ml-auto">
+    <a href="{{URL::route('category.showAddCategory') }}" class="btn btn-success btn-sm">Thêm mới</a>
+    </div>
+</ol>
 @if(session('Success'))
     <div class="alert alert-success">
       {{session('Success')}}
@@ -13,15 +21,11 @@
     </div>
 @endif
 <div class="card mb-3">
-<div class="card-header" align="right">
-  <a href="{{URL::route('category.showAddCategory') }}" class="btn btn-success btn-sm">Thêm mới</a>
-</div>
 <div class="card-body">
   <div class="table-responsive">
     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
       <thead>
         <tr>
-          <th>Mã số</th>
           <th>Tên danh mục</th>
           <th></th>
         </tr>
@@ -29,11 +33,17 @@
       <tbody>
       	@foreach($categorys as $category)
         <tr>
-          <td>{{$category->id}}</td>
-          <td>{{$category->name}}</td>
+          <td>
+            <a href="{{URL::route('category.showEditCategory',['id' => $category->id]) }}"> {{$category->name}}
+            </a>
+          </td>
           <td style="text-align: center;">
-          	<a id="" class="btn btn-info" href="{{URL::route('category.showEditCategory',['id' => $category->id]) }}">Chỉnh sửa</a>
-          	<span id="{{$category->id}}" onclick="deleteCategory('{{$category->id}}')" class="btn btn-danger" >Xóa</span>
+          	<form action="{{URL::route('category.deleteCategory',['id' => $category->id]) }}" method="POST">
+              {{method_field('DELETE')}}
+              @csrf
+              <input type="hidden" name="id" value="{{$category -> id}}">
+              <button class="btn btn-danger btn-sm" type="submit">Xóa</button>
+            </form>
           </td>
         </tr>
         @endforeach
@@ -43,11 +53,5 @@
     	{!! $categorys->links() !!}     	
   </div>
 </div>
+</div>
 @endsection
-<script type="text/javascript">
-  function deleteCategory(id) {
-    if (confirm('Bạn có chắc chắn muốn xóa?')) {
-    $.post('{{URL::route("category.deleteCategory",["id" => '3']) }}')
-    }
-  }
-</script>

@@ -24,7 +24,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categorys = Category::paginate(5);
+        $categorys = Category::paginate(20);
         return view('category.index',['categorys'=>$categorys]);
     }
     public function showAddCategory()
@@ -66,9 +66,9 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $category ->delete();
         }catch(\Exception $e){
-            return redirect()->route('category.index')->with('Fail','Chỉnh sửa không thành công');
+            return redirect()->route('category.index')->with('Fail','Xóa không thành công');
         }
         
-        return redirect()->route('category.index',['id'=>$request->id])->with('Success','Chỉnh sửa thành công');
+        return redirect()->route('category.index',['id'=> $id])->with('Success','Xóa thành công');
     }
 }
