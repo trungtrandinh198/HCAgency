@@ -39,29 +39,6 @@
       <div class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0" style="color: white">
         Xin chào : {{ Auth::user()->name }}
       </div>
-
-      <!-- Navbar -->
-      <ul class="navbar-nav ml-auto ml-md-0">
-        <li class="nav-item dropdown no-arrow">
-          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-user-circle fa-fw"></i>
-          </a>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-            <a class="dropdown-item" href="#">Cài đặt</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal"
-            onclick="event.preventDefault();
-              document.getElementById('logout-form').submit();">
-              {{ __('Đăng xuất') }}
-            </a>
-
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-            @csrf
-            </form>
-          </div>
-        </li>
-      </ul>
-
     </nav>
 
     <div id="wrapper">
@@ -99,9 +76,21 @@
             <i class="fas fa-file-invoice-dollar"></i>
             <span>Hóa đơn</span></a>
         </li>
+        @if(Auth::user()->username == "admin")
+        <li class="nav-item active">
+          <a class="nav-link" href="/register">
+            <i class="fas fa-user-cog"></i>
+            <span>Quản lý user</span></a>
+        </li>
+        @endif
+        <li class="nav-item active">
+          <a class="nav-link" href="">
+            <i class="fas fa-laptop"></i>
+            <span>Bán hàng</span></a>
+        </li>
         <!-- đăng xuất làm tạm -->
         <li class="nav-item active">
-            <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal"
+            <a class="nav-link" href="#" 
             onclick="event.preventDefault();
               document.getElementById('logout-form').submit();">
                 <i class="fas fa-sign-out-alt"></i>
@@ -111,6 +100,7 @@
             @csrf
             </form>
         </li>
+        
         <!-- 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

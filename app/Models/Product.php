@@ -13,7 +13,10 @@ class Product extends Model
      */
     protected $table = 'products';
 
-    public function order_details(){
-        return $this->hasMany('App\OrderDetail');
+    public function orderDetails(){
+        return $this->hasMany('App\Models\OrderDetail');
+    }
+    public function category(){
+    	return $this->belongsTo('App\Models\Category','category_id','id');
     }
 }

@@ -22,7 +22,7 @@
 	 <div class="form-group row">
 	    <label for="nameCategory" class="col-sm-2 col-form-label">Tên danh mục</label>
 	    <div class="col-sm-10">
-	      <input name="name" type="text" class="form-control" id="nameCategory" placeholder="Tên danh mục">
+	      <input name="name" type="text" class="form-control" id="nameCategory"autocomplete="off">
 	    </div>
 	 </div>
   	<div align="right">

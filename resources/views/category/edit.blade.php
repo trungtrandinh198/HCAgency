@@ -23,7 +23,7 @@
 	 <div class="form-group row">
 	    <label for="nameCategory" class="col-sm-2 col-form-label">Tên danh mục</label>
 	    <div class="col-sm-10">
-	      <input type="text" name="name" class="form-control" id="nameCategory" placeholder="Tên danh mục" value="{{$category->name}}">
+	      <input type="text" name="name" class="form-control" id="nameCategory" autocomplete="off" value="{{$category->name}}">
 	    </div>
 	 </div>
   	<div align="right">
