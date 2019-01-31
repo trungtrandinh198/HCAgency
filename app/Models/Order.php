@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Customer;
 
 class Order extends Model
 {
@@ -15,5 +16,9 @@ class Order extends Model
 
     public function order_details(){
         return $this->hasMany('App\Models\OrderDetail');
+    }
+
+    public function customer(){
+    	return $this->belongsTo('App\Models\Customer','customers_id', 'id');
     }
 }

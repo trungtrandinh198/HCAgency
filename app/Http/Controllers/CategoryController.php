@@ -52,10 +52,10 @@ class CategoryController extends Controller
     {
         try{
         $category = Category::find($request->id);
-        $category ->name =$requestme->name;
+        $category ->name = $request->name;
         $category ->save();
         }catch(\Exception $e){
-            return redirect()->route('category.showEditCategory')->with('Fail','Chỉnh sửa không thành công');
+            return redirect()->route('category.showEditCategory',['id'=>$request->id])->with('Fail','Chỉnh sửa không thành công');
         }
         
         return redirect()->route('category.showEditCategory',['id'=>$request->id])->with('Success','Chỉnh sửa thành công');
