@@ -13,7 +13,7 @@ class Customer extends Model
      */
     protected $table = 'customers';
 
-    public function orders(){
-		return $this->hasMany('App\Models\Order');
+    public function order(){
+		return $this->hasMany('App\Models\Order','customers_id','id');
     }
 }

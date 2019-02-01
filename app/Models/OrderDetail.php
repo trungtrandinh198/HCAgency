@@ -12,4 +12,9 @@ class OrderDetail extends Model
      * @var string
      */
     protected $table = 'order_details';
+
+    public function product()
+    {
+    	return $this->belongsTo('App\Models\Product','products_id','id');
+    }
 }

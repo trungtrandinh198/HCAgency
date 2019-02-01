@@ -84,7 +84,7 @@
         </li>
         @endif
         <li class="nav-item active">
-          <a class="nav-link" href="">
+          <a class="nav-link" href="{{ URL::route('sell.index') }}">
             <i class="fas fa-laptop"></i>
             <span>Bán hàng</span></a>
         </li>

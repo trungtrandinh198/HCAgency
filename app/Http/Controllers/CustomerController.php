@@ -57,7 +57,7 @@ class CustomerController extends Controller
         $customer ->address =$request->address;
         $customer ->save();
         }catch(\Exception $e){
-            return redirect()->route('customer.showEditCustomer')->with('Fail','Chỉnh sửa không thành công');
+            return redirect()->route('customer.showEditCustomer',['id'=>$request->id])->with('Fail','Chỉnh sửa không thành công');
         }
         
         return redirect()->route('customer.showEditCustomer',['id'=>$request->id])->with('Success','Chỉnh sửa thành công');

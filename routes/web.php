@@ -26,8 +26,11 @@ Route::group(['prefix'=>'category','as' => 'category.'],function(){
 	//delete
 	Route::delete('/action-delete-category/{id}', 'CategoryController@deleteCategory')->name('deleteCategory');
 });
+//router đơn hàng
 Route::group(['prefix'=>'order','as' => 'order.'],function(){
 	Route::get('/', 'OrderController@index')->name('index');
+	//detail sản phẩm
+	Route::get('/order-detail/{id}', 'OrderController@showOrder')->name('showOrder');
 });
 //route về sản phẩm
 Route::group(['prefix'=>'product','as' => 'product.'],function(){
@@ -54,7 +57,9 @@ Route::group(['prefix'=>'customer','as' => 'customer.'],function(){
 	Route::delete('/action-delete-customer/{id}', 'CustomerController@deleteCustomer')->name('deleteCustomer');
 });
 
-
+Route::group(['prefix'=>'sell','as' => 'sell.'],function(){
+	Route::get('/', 'SellController@index')->name('index');
+});
 
 
 
