@@ -15,10 +15,10 @@ class Order extends Model
     protected $table = 'orders';
 
     public function order_details(){
-        return $this->hasMany('App\Models\OrderDetail');
+        return $this->hasMany('App\Models\OrderDetail','order_id','id');
     }
 
     public function customer(){
-    	return $this->belongsTo('App\Models\Customer','customers_id', 'id');
+    	return $this->belongsTo('App\Models\Customer','customer_id', 'id');
     }
 }
