@@ -30,7 +30,7 @@ class OrderController extends Controller
     //hiển thị chi tiết hóa đơn
     public function showOrder($id){
         $order = Order::find($id);
-        $orderDetails = OrderDetail::where('ordes_id', $order->id)->get();
+        $orderDetails = OrderDetail::where('order_id', $order->id)->get();
         return view('order.detail',compact('order','orderDetails'));
     }
 }

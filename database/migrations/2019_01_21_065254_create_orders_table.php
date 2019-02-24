@@ -16,8 +16,8 @@ class CreateOrdersTable extends Migration
         Schema::defaultStringLength(191);
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('users_id');
-            $table->integer('customers_id');
+            $table->integer('user_id');
+            $table->integer('customer_id');
             $table->double('total_price');
             $table->integer('status');//. trạng thái thanh toán đơn hàng
             $table->timestamps();

@@ -27,7 +27,7 @@
 	    </div>
 	 </div>
 	 <div class="form-group row">
-	    <label for="priceProduct" class="col-sm-2 col-form-label">Giá (đ)</label>
+	    <label for="priceProduct" class="col-sm-2 col-form-label number">Giá (đ)</label>
 	    <div class="col-sm-10">
 	      <input type="number" name="price" class="form-control" id="priceProduct" autocomplete="off" value="{{$product->price}}">
 	    </div>

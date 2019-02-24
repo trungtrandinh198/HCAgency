@@ -14,6 +14,6 @@ class Customer extends Model
     protected $table = 'customers';
 
     public function order(){
-		return $this->hasMany('App\Models\Order','customers_id','id');
+		return $this->hasMany('App\Models\Order','customer_id','id');
     }
 }
