@@ -14,7 +14,7 @@ class Product extends Model
     protected $table = 'products';
 
     public function orderDetails(){
-        return $this->hasMany('App\Models\OrderDetail','products_id','id');
+        return $this->hasMany('App\Models\OrderDetail','product_id','id');
     }
     public function category(){
     	return $this->belongsTo('App\Models\Category','category_id','id');

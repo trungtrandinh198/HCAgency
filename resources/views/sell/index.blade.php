@@ -12,15 +12,14 @@
         <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
         <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
-        <link href="css/sb-admin.css" rel="stylesheet">
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
     <body>
-        <div class="container">
-            <div class="row" style="min-height: 700px">
+        <div class="container" style="padding:-80px">
+            <div class="row" style="height: 500px">
                 <div class="block col-lg-6">
                     <strong>Đơn hàng</strong>
-                    <div  style="height: 700px;overflow-y: scroll;">
+                    <div  style="height: 500px;overflow-y: scroll;">
                         <div>
                             <table class="table">
                                 <thead>
@@ -29,17 +28,27 @@
                                         <th>Đơn giá</th>
                                         <th>Số lượng</th>
                                         <th>Tổng tiền</th>
-                                        <th></th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>bánh</td>
+                                <tbody id="tbody-cart">
+                                    <tr class="tr-product">
+                                        <td>
+                                            <span style="color: red">
+                                                <i class="fas fa-window-close"></i>
+                                            </span>
+                                            <span>bánh</span>
+                                        </td>
                                         <td>5 000</td>
-                                        <td>5</td>
+                                        <td>
+                                            <div class="form-group" style="width: 90px">
+                                            <input type="" name="" min="1" style="width: 40px; height: 24px">
+                                            <i class="far fa-caret-square-up" style="color: red; font-size:20px"></i>
+                                            <i class="far fa-caret-square-down" style="color: red; font-size:20px"></i>
+                                            </div>
+                                        </td>
                                         <td>25 000</td>
-                                        <td></td>
                                     </tr>
+                                    
                                 </tbody>
                             </table>
                         </div>
@@ -56,93 +65,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="block col-lg-6">
+                <div class=" col-lg-6">
                     <div class="block-title">
                         <strong>Sản phẩm</strong>
                     </div>
-                    <div style="height: 400px">
-                        <ul class="" style="overflow-y: scroll; height: 700px">
+                    <div style="height: 500px;">
+                        <ul class="" style="overflow-y: scroll; height: 100%; margin-left: -40px;" >
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 <span>Thèo lèo</span>
                                 <span>5,000 vnd</span>
-                                <span class="badge badge-primary badge-pill">Thêm</span>
-                            </li>
-<li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Thèo lèo</span>
-                                <span>5,000 vnd</span>
-                                <span class="badge badge-primary badge-pill">Thêm</span>
-                            </li><li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Thèo lèo</span>
-                                <span>5,000 vnd</span>
-                                <span class="badge badge-primary badge-pill">Thêm</span>
-                            </li><li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Thèo lèo</span>
-                                <span>5,000 vnd</span>
-                                <span class="badge badge-primary badge-pill">Thêm</span>
-                            </li><li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Thèo lèo</span>
-                                <span>5,000 vnd</span>
-                                <span class="badge badge-primary badge-pill">Thêm</span>
-                            </li><li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Thèo lèo</span>
-                                <span>5,000 vnd</span>
-                                <span class="badge badge-primary badge-pill">Thêm</span>
-                            </li><li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Thèo lèo</span>
-                                <span>5,000 vnd</span>
-                                <span class="badge badge-primary badge-pill">Thêm</span>
-                            </li><li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Thèo lèo</span>
-                                <span>5,000 vnd</span>
-                                <span class="badge badge-primary badge-pill">Thêm</span>
-                            </li><li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Thèo lèo</span>
-                                <span>5,000 vnd</span>
-                                <span class="badge badge-primary badge-pill">Thêm</span>
-                            </li><li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Thèo lèo</span>
-                                <span>5,000 vnd</span>
-                                <span class="badge badge-primary badge-pill">Thêm</span>
-                            </li><li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Thèo lèo</span>
-                                <span>5,000 vnd</span>
-                                <span class="badge badge-primary badge-pill">Thêm</span>
-                            </li><li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Thèo lèo</span>
-                                <span>5,000 vnd</span>
-                                <span class="badge badge-primary badge-pill">Thêm</span>
-                            </li><li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Thèo lèo</span>
-                                <span>5,000 vnd</span>
-                                <span class="badge badge-primary badge-pill">Thêm</span>
-                            </li><li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Thèo lèo</span>
-                                <span>5,000 vnd</span>
-                                <span class="badge badge-primary badge-pill">Thêm</span>
-                            </li><li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Thèo lèo</span>
-                                <span>5,000 vnd</span>
-                                <span class="badge badge-primary badge-pill">Thêm</span>
-                            </li><li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Thèo lèo</span>
-                                <span>5,000 vnd</span>
-                                <span class="badge badge-primary badge-pill">Thêm</span>
-                            </li><li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Thèo lèo</span>
-                                <span>5,000 vnd</span>
-                                <span class="badge badge-primary badge-pill">Thêm</span>
-                            </li><li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Thèo lèo</span>
-                                <span>5,000 vnd</span>
-                                <span class="badge badge-primary badge-pill">Thêm</span>
-                            </li><li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Thèo lèo</span>
-                                <span>5,000 vnd</span>
-                                <span class="badge badge-primary badge-pill">Thêm</span>
-                            </li><li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>Thèo lèo</span>
-                                <span>5,000 vnd</span>
-                                <span class="badge badge-primary badge-pill">Thêm</span>
+                                <span id="1" class="badge badge-primary badge-pill" onclick="addProduct(this)">Thêm</span>
                             </li>
                         </ul>
                     </div>
@@ -150,9 +82,17 @@
             </div>
     </body>
     </div>
+    <style type="text/css">
+        @media (min-width: 1200px) {
+            .container {
+            width: 100%;
+        }
+}
+    </style>
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script type="text/javascript" src="/js/sell.js"></script>
     </body>
 </html>
