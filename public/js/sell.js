@@ -9,5 +9,7 @@ function deleteProduct(element){
 function addCustomer(element){
 	document.getElementById("inputIdCustomer").value = $(element).attr("customer-id-select");
 	document.getElementById('nameCustomer').innerHTML=$(element).attr("customer-name-select");
-	
+}
+function addProduct(element){
+	alert($(element).attr('id'));
 }
