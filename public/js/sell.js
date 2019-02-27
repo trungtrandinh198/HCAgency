@@ -1,15 +1,45 @@
 
 function addProduct(element){
 
-	$("#tbody-cart").append("<tr class='tr-product'><td><span style='color: red'onclick='deleteProduct(this)''><i class='fas fa-window-close'></i></span><span>bánh</span></td><td>5 000</td><td><div class='form-group' style='width: 90px'><input type='number' class='form-control' name='' min='1' style='width: 60px; height: 24px'></div></td><td>25 000</td></tr>");
+	var id = $(element).attr("id");
+	var name = $(element).children(".spanNameProduct").text();
+	var price = $(element).children(".spanPriceProduct").text();
+	var quantity = 1;
+	var sum = quantity*parseInt(price);
+
+	$("#tbody-cart").append(htmlAddProductCart(name,sum));
+	totalBill();
 }
 function deleteProduct(element){
 	$(element).parent().parent().remove();
 }
+
 function addCustomer(element){
 	document.getElementById("inputIdCustomer").value = $(element).attr("customer-id-select");
-	document.getElementById('nameCustomer').innerHTML=$(element).attr("customer-name-select");
+	document.getElementById('nameCustomer').innerHTML= $(element).attr("customer-name-select");
 }
-function addProduct(element){
-	alert($(element).attr('id'));
+
+function htmlAddProductCart(name,price){
+	var html = 
+	"<tr>"+
+	"<input class='id-product-cart' type='hidden' value='1'>"+
+		"<td>"+name+"</td>"+
+		"<td>"+price+"</td>"+
+		"<td ><input class='form-control quantity' type='number' value='1' style='height: 25px;width: 50px'></td>"+
+		"<td class='number cl-total-price'>"+price+"</td>"+
+	"</tr>";
+	return html;
+}
+function totalBill(){
+
+	var sum = 0;
+    $('.cl-total-price').each(function() {
+    	console.log($("cl-total-price").closest('tr').find('.quantity').val())
+        var price = $(this);
+        var q = 1;
+        sum += parseInt(price.text()) * parseInt(q);
+    });
+
+    $('#total-bill').html(sum);
+
 }
