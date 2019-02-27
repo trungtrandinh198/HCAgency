@@ -13,6 +13,7 @@
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <link href="{{ asset('css/sell.css') }}" rel="stylesheet">
   </head>
   <body>
     <div class="navbar">
@@ -62,7 +63,7 @@
                   <span class="spanPriceProduct">5000</span>
                 <li id="2" class="list-group-item d-flex justify-content-between align-items-center" onclick="addProduct(this)">
                   <span class="spanNameProduct">Mè</span>
-                  <span class="spanPriceProduct">5000</span>
+                  <span class="spanPriceProduct">2000</span>
                 </li>
                 <li id="3" class="list-group-item d-flex justify-content-between align-items-center" onclick="addProduct(this)">
                   <span class="spanNameProduct">nui</span>
@@ -70,7 +71,7 @@
                 </li>
                 <li id="4" class="list-group-item d-flex justify-content-between align-items-center" onclick="addProduct(this)">
                   <span class="spanNameProduct">Tai</span>
-                  <span class="spanPriceProduct">5000</span>
+                  <span class="spanPriceProduct">4000</span>
                 </li>
               </ul>
             </div>
@@ -113,46 +114,9 @@
     <!--end Modal -->
   </body>
 </html>
+
 <!-- Bootstrap core JavaScript-->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 <script type="text/javascript" src="/js/sell.js"></script>
-<style>
-  th{
-    text-align: center;
-  }
-  .number{
-    text-align: right;
-  }
-  .navbar {
-  overflow: hidden;
-  background-color: #333;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  z-index: 1;
-  }
-  .navbar a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-  }
-  .navbar a:hover {
-  background: #ddd;
-  color: black;
-  }
-  .main {
-  padding: 16px;
-  margin-bottom: 30px;
-  height: 1500px; /* Used in this example to enable scrolling */
-  }
-  li:active{
-  background: #333;
-  color: #f2f2f2;
-  }
-</style>
