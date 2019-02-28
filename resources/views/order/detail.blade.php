@@ -28,7 +28,14 @@
 			Tổng tiền: <span class="font-weight-bold">{{number_format($order -> total_price)}} đ</span>
 		</div>
 		<div>
-			Trạng thái: <span class="font-weight-bold">Đã thanh toán</span>
+			<span>Trạng thái:</span>  
+			<span class="font-weight-bold">
+				@if($order ->status == '0')
+					Chưa thanh toán
+				@else
+					Đã thanh toán
+				@endif
+			</span>
 		</div>
 	</div>
 	<div class="col-sm-8" align="right">

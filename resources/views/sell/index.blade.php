@@ -12,40 +12,39 @@
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
-    <script src="{{ asset('js/app.js') }}" defer></script>
     <link href="{{ asset('css/sell.css') }}" rel="stylesheet">
   </head>
   <body>
     <div class="navbar">
-      <p class="customerTag" customerid="0" style="width: 40%;color: #fff" data-toggle="modal" data-target="#customerList">
-        <input id="inputIdCustomer" type="hidden" name="idCustomer" value="0">
-        <input id="inputIdUser" type="hidden" name="idCustomer" value="0">
+      <p class="customerTag" style="width: 40%;color: #fff" data-toggle="modal" data-target="#customerList">
         <i class="fas fa-user-tag " style="color: green"></i> 
-        <span id="nameCustomer">Khách Vãng lai</span>
+        <span id="nameCustomer">Khách lẻ</span>
       </p>
-      <p style="text-align: right; width: 60%; color: #fff" >Tổng: <span id="total-bill"></span></p>
+      <p style="text-align: right; width: 60%; color: #fff" >Tổng: <span id="total-bill">0</span> VND</p>
       <div style="width: 100%; height: 1px; background-color: #fff; margin-bottom: 5px"></div>
       <button class="btn btn-warning btn-sm">In đơn</button>
-      <button class="btn btn-primary btn-sm">Lưu</button>
-      <button class="btn btn-danger btn-sm">Hủy</button>
+      <button class="btn btn-primary btn-sm" onclick="saveBill()">Lưu</button>
+      <button class="btn btn-danger btn-sm" onclick="location.reload()">Hủy</button>
       <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#productList">
       <i class="fas fa-cart-plus"></i>
       </button>
     </div>
-    <form style="margin-bottom: 100px">
-        <table class="table">
-          <thead class="thead-dark">
-            <tr>
-              <th scope="col">Tên</th>
-              <th scope="col">Giá</th>
-              <th scope="col">SL</th>
-              <th scope="col">Tổng</th>
-            </tr>
-          </thead>
-          <tbody id="tbody-cart">
-            <!-- content-->
-          </tbody>
-        </table>
+    <form id="form" action="{{URL::route('sell.saveBill') }}" method="POST" style="margin-bottom: 100px">
+      @csrf
+      <input id="inputIdCustomer" type="hidden" name="idCustomer" value="0">
+      <table class="table" id="table-cart">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Tên</th>
+            <th scope="col">Giá</th>
+            <th scope="col">SL</th>
+            <th scope="col">Tổng</th>
+          </tr>
+        </thead>
+        <tbody id="tbody-cart">
+          <!-- content-->
+        </tbody>
+      </table>
     </form>
     <!-- Modal product-->
     <div class="modal fade" id="productList" role="dialog">
@@ -58,21 +57,12 @@
           <div class="modal-body">
             <div style="height: 400px;">
               <ul style="overflow-y: scroll; height: 100%; margin-left: -40px;" >
-                <li id="1" class="list-group-item d-flex justify-content-between align-items-center" onclick="addProduct(this)">
-                  <span class="spanNameProduct">Lèo</span>
-                  <span class="spanPriceProduct">5000</span>
-                <li id="2" class="list-group-item d-flex justify-content-between align-items-center" onclick="addProduct(this)">
-                  <span class="spanNameProduct">Mè</span>
-                  <span class="spanPriceProduct">2000</span>
+                @foreach($products as $product)
+                <li id="{{$product -> id}}" class="list-group-item d-flex justify-content-between align-items-center" onclick="check(this)">
+                  <span class="spanNameProduct">{{$product -> name}}</span>
+                  <span class="spanPriceProduct">{{$product -> price}}</span>
                 </li>
-                <li id="3" class="list-group-item d-flex justify-content-between align-items-center" onclick="addProduct(this)">
-                  <span class="spanNameProduct">nui</span>
-                  <span class="spanPriceProduct">5000</span>
-                </li>
-                <li id="4" class="list-group-item d-flex justify-content-between align-items-center" onclick="addProduct(this)">
-                  <span class="spanNameProduct">Tai</span>
-                  <span class="spanPriceProduct">4000</span>
-                </li>
+                @endforeach()
               </ul>
             </div>
           </div>
@@ -94,14 +84,12 @@
           <div class="modal-body">
             <div style="height: 400px;">
               <ul style="overflow-y: scroll; height: 100%; margin-left: -40px;" >
-                <li customer-id-select="1" customer-name-select="Nguyễn văn a" class="list-group-item d-flex justify-content-between align-items-center" onclick="addCustomer(this)">
-                  <span >Nguyễn văn a</span>
-                  <span>119 đỗ quang</span>
+                @foreach($customers as $customer)
+                <li customer-id-select="{{$customer->id}}" customer-name-select="{{$customer->name}}" class="list-group-item d-flex justify-content-between align-items-center" onclick="addCustomer(this)">
+                  <span >{{$customer->name}}</span>
+                  <span>{{$customer->address}}</span>
                 </li>
-                <li customer-id-select="2" customer-name-select="Nguyễn văn b" class="list-group-item d-flex justify-content-between align-items-center" onclick="addCustomer(this)">
-                  <span >Nguyễn văn b</span>
-                  <span>119 đỗ quang</span>
-                </li>
+                @endforeach()
               </ul>
             </div>
           </div>
@@ -114,7 +102,6 @@
     <!--end Modal -->
   </body>
 </html>
-
 <!-- Bootstrap core JavaScript-->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
