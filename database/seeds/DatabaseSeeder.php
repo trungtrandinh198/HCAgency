@@ -24,9 +24,9 @@ class DatabaseSeeder extends Seeder
             'name' => 'Kẹo',
         ]);
         DB::table('customers')->insert([
-            'name' => 'bà hai',
-            'address' => 'Chợ cồn',
-            'phone_number' => '01234545443'
+            'name' => 'Khách lẻ',
+            'address' => 'Không có',
+            'phone_number' => '0000000000'
         ]);
     }
 }
