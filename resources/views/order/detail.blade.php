@@ -3,7 +3,7 @@
 @section('content')
 <ol class="breadcrumb">
     <li >
-        <a href="#">Hóa đơn</a>
+        <a href="{{ URL::route('order.index') }}">Hóa đơn</a>
     </li>
     <div class="form-inline ml-auto">
 		<div class="btn btn-info btn-sm">
@@ -36,6 +36,9 @@
 					Đã thanh toán
 				@endif
 			</span>
+		</div>
+		<div>
+			Bản bởi: <span class="font-weight-bold">{{$order->user->name}}</span>
 		</div>
 	</div>
 	<div class="col-sm-8" align="right">

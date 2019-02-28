@@ -3,7 +3,7 @@
 @section('content')
 <ol class="breadcrumb">
     <li class="breadcrumb-item">
-        <a href="#">Chỉnh sửa: {{$customer->name}}</a>
+        <a href="{{ URL::route('customer.index') }}">Chỉnh sửa: {{$customer->name}}</a>
     </li>
 </ol>
 @if(session('Success'))

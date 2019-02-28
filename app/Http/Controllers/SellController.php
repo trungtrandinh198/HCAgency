@@ -30,7 +30,7 @@ class SellController extends Controller
 		return view('sell.index',compact('products','customers'));
 	}
 
-    public function saveBill(Request $request){
+    public function saveOrder(Request $request){
       
         $arrProductAndQuantity = $request->data;
         $idOrder = 0;
@@ -49,7 +49,7 @@ class SellController extends Controller
 
         foreach($arrProductAndQuantity as $key => $item) {
             foreach($item as $id => $quantity) {
-                $price = Product::find(3)->price;
+                $price = Product::find($id)->price;
                 try{
                     $orderDetail = new OrderDetail;
                     $orderDetail ->order_id = $idOrder;
