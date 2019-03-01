@@ -3,7 +3,7 @@
 @section('content')
 <ol class="breadcrumb">
     <li class="breadcrumb-item">
-        <a href="#">Thêm mới</a>
+        <a href="{{ URL::route('category.index') }}">Thêm mới</a>
     </li>
 </ol>
 @if(session('Success'))

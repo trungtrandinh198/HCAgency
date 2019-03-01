@@ -59,7 +59,7 @@
         </li>
         <!-- chuyển đên hàng hóa -->
         <li class="nav-item active">
-          <a class="nav-link" href="/product">
+          <a class="nav-link" href="{{ URL::route('product.index') }}">
             <i class="fas fa-shopping-cart"></i>
             <span>Hàng hóa</span>
           </a>

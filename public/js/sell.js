@@ -25,11 +25,11 @@ function addProduct(element){
 	var sum = quantity*parseInt(price);
 
 	$("#tbody-cart").append(htmlAddProductCart(id,name,sum));
-	totalBill();
+	totalOrder();
 }
 function deleteProduct(element){
 	$(element).parent().parent().remove();
-	totalBill();
+	totalOrder();
 }
 
 
@@ -50,10 +50,10 @@ function sumPrice(element){
 	var quantity = $(element).val();
 	var price = $(element).closest('tr').find('.price').text();
 	$(element).closest('tr').find('.cl-total-price').html(parseInt(quantity) * parseInt(price));
-	totalBill();
+	totalOrder();
 }
 
-function totalBill(){
+function totalOrder(){
 	var sum = 0;
     $('.cl-total-price').each(function() {
         var element = $(this);
@@ -61,7 +61,7 @@ function totalBill(){
         var quantity = element.closest('tr').find('.quantity').val();
         sum += parseInt(price) * parseInt(quantity);
     });
-    $('#total-bill').html(sum);
+    $('#total-Order').html(sum);
 
 }
 
@@ -70,7 +70,7 @@ function addCustomer(element){
 	document.getElementById('nameCustomer').innerHTML= $(element).attr("customer-name-select");
 }
 
-function saveBill(){
+function saveOrder(){
 	var data = [];
 	var idCustomer = $('#inputIdCustomer').val() ;
 	$('.element-cart').each(function(index,element) {
@@ -95,7 +95,7 @@ function saveBill(){
         cache: false,
         async: false,
         success: function (success) {
-        	console.log(success);
+        	location.reload();
         }
     });
    

@@ -20,18 +20,18 @@
         <i class="fas fa-user-tag " style="color: green"></i> 
         <span id="nameCustomer">Khách lẻ</span>
       </p>
-      <p style="text-align: right; width: 60%; color: #fff" >Tổng: <span id="total-bill">0</span> VND</p>
+      <p style="text-align: right; width: 60%; color: #fff" >Tổng: <span id="total-Order">0</span> VND</p>
       <div style="width: 100%; height: 1px; background-color: #fff; margin-bottom: 5px"></div>
       <button class="btn btn-warning btn-sm">In đơn</button>
-      <button class="btn btn-primary btn-sm" onclick="saveBill()">Lưu</button>
+      <button class="btn btn-primary btn-sm" onclick="saveOrder()">Lưu</button>
       <button class="btn btn-danger btn-sm" onclick="location.reload()">Hủy</button>
       <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#productList">
       <i class="fas fa-cart-plus"></i>
       </button>
     </div>
-    <form id="form" action="{{URL::route('sell.saveBill') }}" method="POST" style="margin-bottom: 100px">
+    <form id="form" action="{{URL::route('sell.saveOrder') }}" method="POST" style="margin-bottom: 100px">
       @csrf
-      <input id="inputIdCustomer" type="hidden" name="idCustomer" value="0">
+      <input id="inputIdCustomer" type="hidden" name="idCustomer" value="1">
       <table class="table" id="table-cart">
         <thead class="thead-dark">
           <tr>
