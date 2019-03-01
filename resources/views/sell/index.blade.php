@@ -20,9 +20,11 @@
         <i class="fas fa-user-tag " style="color: green"></i> 
         <span id="nameCustomer">Khách lẻ</span>
       </p>
+      <input type="hidden"  id="addressCustomer" value="qưewqe">
+      <input type="hidden"  id="phoneCustomer" value="ewqeq">
       <p style="text-align: right; width: 60%; color: #fff" >Tổng: <span id="total-Order">0</span> VND</p>
       <div style="width: 100%; height: 1px; background-color: #fff; margin-bottom: 5px"></div>
-      <button class="btn btn-warning btn-sm">In đơn</button>
+      <button class="btn btn-warning btn-sm" onclick="printDiv()">In đơn</button>
       <button class="btn btn-primary btn-sm" onclick="saveOrder()">Lưu</button>
       <button class="btn btn-danger btn-sm" onclick="location.reload()">Hủy</button>
       <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#productList">
@@ -85,7 +87,7 @@
             <div style="height: 400px;">
               <ul style="overflow-y: scroll; height: 100%; margin-left: -40px;" >
                 @foreach($customers as $customer)
-                <li customer-id-select="{{$customer->id}}" customer-name-select="{{$customer->name}}" class="list-group-item d-flex justify-content-between align-items-center" onclick="addCustomer(this)">
+                <li customer-id-select="{{$customer->id}}" customer-name-select="{{$customer->name}}" customer-address-select="{{$customer->address}}" customer-phone-select="{{$customer->phone_number}}" class="list-group-item d-flex justify-content-between align-items-center" onclick="addCustomer(this)">
                   <span >{{$customer->name}}</span>
                   <span>{{$customer->address}}</span>
                 </li>

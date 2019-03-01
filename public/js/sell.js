@@ -39,8 +39,8 @@ function htmlAddProductCart(id,name,price){
 	"<tr class='element-cart'>"+
 	"<input class='id-product-cart' type='hidden' name='product_id' value='"+id+"'>"+
 		"<td>"+"<i class='fa fa-window-close' style='color: red;' onclick='deleteProduct(this)'></i> "+name+"</td>"+
-		"<td class='price'>"+price+"</td>"+
-		"<td ><input class='form-control quantity' name='quantity' type='number' value='1' style='height: 25px;width: 50px' onchange='sumPrice(this)'></td>"+
+		"<td class='price number'>"+price+"</td>"+
+		"<td ><input class='form-control quantity number' name='quantity' type='number' value='1' style='height: 25px;width: 50px' onchange='sumPrice(this)'></td>"+
 		"<td class='number cl-total-price'>"+price+"</td>"+
 	"</tr>";
 	return html;
@@ -68,6 +68,8 @@ function totalOrder(){
 function addCustomer(element){
 	document.getElementById("inputIdCustomer").value = $(element).attr("customer-id-select");
 	document.getElementById('nameCustomer').innerHTML= $(element).attr("customer-name-select");
+	document.getElementById("addressCustomer").value = $(element).attr("customer-address-select");
+	document.getElementById("phoneCustomer").value = $(element).attr("customer-phone-select");
 }
 
 function saveOrder(){
@@ -100,3 +102,34 @@ function saveOrder(){
     });
    
 }
+function printDiv() {
+        var dataTable=document.getElementById("table-cart");
+        var totalOrder=$("#total-Order").text();
+        var nameCustomer=$("#nameCustomer").text();
+        var addressCustomer=$("#addressCustomer").val();
+        var phoneCustomer=$("#phoneCustomer").val();
+        var d = new Date();
+        var time= "Ngày "+d.getDate()+" Tháng "+d.getMonth()+" năm "+d.getFullYear();
+		printWindows= window.open("");
+		printWindows.document.write("<div style ='text-align:center;width:300px'>");
+		printWindows.document.write("<div style='font-size:28px;'>Hóa Đơn Bán Hàng</div>");
+		printWindows.document.write("<div style='font-size:22px;'>Đại Lý Hùng Chính</div>");
+		printWindows.document.write("<div style=''>Điện thoại: 0000000000</div><br>");
+		printWindows.document.write("</div>");
+		printWindows.document.write("<div>Người mua:"+nameCustomer+"</div>");
+		printWindows.document.write("<div>Địa chỉ: "+addressCustomer+"</div>");
+		printWindows.document.write("<div>Số điện thoại: "+phoneCustomer+"</div>");
+		printWindows.document.write(dataTable.outerHTML);
+		printWindows.document.write("<div style='align:rigth'>Tổng tiền: "+totalOrder+"</div>");
+		printWindows.document.write("<div style='margin-left:133px'>"+time+"</div>");
+		printWindows.document.write("<div style='margin-left:150px;'>Khách ký thanh toán</div><br>");
+		
+		printWindows.document.write("<style>");
+		printWindows.document.write("input {background-color: transparent; border: 0px solid;}");
+		printWindows.document.write("tr {border: 1px solid #ddd;}");
+		printWindows.document.write(".number {text-align: right;}");
+		printWindows.document.write("</style>");
+		printWindows.print();
+   		printWindows.close();
+
+   }
