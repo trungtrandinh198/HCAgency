@@ -6,10 +6,10 @@
         <a href="{{ URL::route('order.index') }}">Hóa đơn</a>
     </li>
     <div class="form-inline ml-auto">
-		<div class="btn btn-info btn-sm">
+		<a class="btn btn-info btn-sm" target="_blank" href="{{ URL::route('sell.printBill',['id' => $order->id])}}">
 		<i class="fas fa-print"></i>
 		 In hóa đơn
-	</div>
+	</a>
     </div>
 </ol>
 <div class="row">

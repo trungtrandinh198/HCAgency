@@ -60,6 +60,7 @@ Route::group(['prefix'=>'customer','as' => 'customer.'],function(){
 Route::group(['prefix'=>'sell','as' => 'sell.'],function(){
 	Route::get('/', 'SellController@index')->name('index');
 	Route::post('/save', 'SellController@saveOrder')->name('saveOrder');
+	Route::get('/print/{id}', 'SellController@printBill')->name('printBill');
 });
 
 

@@ -24,7 +24,7 @@
       <input type="hidden"  id="phoneCustomer" value="ewqeq">
       <p style="text-align: right; width: 60%; color: #fff" >Tổng: <span id="total-Order">0</span> VND</p>
       <div style="width: 100%; height: 1px; background-color: #fff; margin-bottom: 5px"></div>
-      <button class="btn btn-warning btn-sm" onclick="printDiv()">In đơn</button>
+      <button class="btn btn-warning btn-sm" onclick="backHome()"><i class="fas fa-arrow-circle-left"></i> <span>Trở về</span></button>
       <button class="btn btn-primary btn-sm" onclick="saveOrder()">Lưu</button>
       <button class="btn btn-danger btn-sm" onclick="location.reload()">Hủy</button>
       <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#productList">
