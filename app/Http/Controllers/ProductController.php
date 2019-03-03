@@ -24,7 +24,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(20);
+        $products = Product::where('isdelete',0)->paginate(20);
         $categorys = Category::all();
         return view('product.index',compact('products','categorys'));
     }
@@ -73,7 +73,8 @@ class ProductController extends Controller
     {
         try{
         $product = Product::find($id);
-        $product ->delete();
+        $product ->isdelete = 1;
+        $product ->save();
         }catch(\Exception $e){
             return redirect()->route('product.index')->with('Fail','Xóa không thành công');
         }

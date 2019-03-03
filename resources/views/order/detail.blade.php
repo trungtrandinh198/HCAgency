@@ -14,7 +14,7 @@
 </ol>
 <div class="row">
 	
-	<div class="col-sm-4">
+	<div class="col-sm-6">
 		<div >
 			Mã đơn: <span class="font-weight-bold">{{$order->id}}</span>
 		</div>
@@ -40,13 +40,23 @@
 		<div>
 			Bản bởi: <span class="font-weight-bold">{{$order->user->name}}</span>
 		</div>
+		<form method="post" action="{{URL::route('order.uploadImage')}}" enctype="multipart/form-data">
+    	@csrf
+	    	<div>Cập nhập ảnh hóa đơn</div>
+	    	<input type="hidden" name="order_id" value="{{$order->id}}">
+	       	<input type="file" class="btn-sm" name="select_file">
+	       	<input type="submit" name="upload" class="btn btn-primary btn-sm" value="Tải hóa đơn lên">
+   		</form>
 	</div>
-	<div class="col-sm-8" align="right">
-		<img style="height: 120px;width: 60" src="https://thueketoan.vn/wp-content/uploads/2017/09/nhung-thu-tuc-can-lam-khi-dat-hoa-don-hinh-cover-400x567.jpg">
-		<img style="height: 120px;width: 60" src="https://thueketoan.vn/wp-content/uploads/2017/09/nhung-thu-tuc-can-lam-khi-dat-hoa-don-hinh-cover-400x567.jpg">
-		<img style="height: 120px;width: 60" src="https://thueketoan.vn/wp-content/uploads/2017/09/nhung-thu-tuc-can-lam-khi-dat-hoa-don-hinh-cover-400x567.jpg">
-		<img style="height: 120px;width: 60" src="https://thueketoan.vn/wp-content/uploads/2017/09/nhung-thu-tuc-can-lam-khi-dat-hoa-don-hinh-cover-400x567.jpg">
+	<div class="col-sm-6" align="right">
+		@foreach($imageBills as $imageBill)
+		<a href="{{$imageBill->ulr}}" target="_blank">
+			<img style="height: 120px;width: 60" src="{{$imageBill->ulr}}">
+		</a>
+		
+		@endforeach
 	</div>
+
 </div>
 <div class="card-body">
 	<h4 >Chi tiết đơn hàng</h4>
