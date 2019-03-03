@@ -20,6 +20,7 @@ class CreateOrdersTable extends Migration
             $table->integer('customer_id');
             $table->double('total_price');
             $table->integer('status');//. trạng thái thanh toán đơn hàng
+            $table->integer('isdelete')->default(0);
             $table->timestamps();
             //
         });

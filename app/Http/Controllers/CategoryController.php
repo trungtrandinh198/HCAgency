@@ -24,7 +24,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categorys = Category::paginate(20);
+        $categorys = Category::where('isdelete',0)->paginate(20);
         return view('category.index',['categorys'=>$categorys]);
     }
     public function showAddCategory()
@@ -64,7 +64,8 @@ class CategoryController extends Controller
     {
         try{
         $category = Category::find($id);
-        $category ->delete();
+        $category ->isdelete = 1;
+        $category ->save();
         }catch(\Exception $e){
             return redirect()->route('category.index')->with('Fail','Xóa không thành công');
         }

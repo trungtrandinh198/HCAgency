@@ -22,7 +22,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customers = Customer::paginate(20);
+        $customers = Customer::where('isdelete',0)->paginate(20);
         return view('customer.index',compact('customers'));
     }
         public function showAddCustomer()
@@ -66,7 +66,8 @@ class CustomerController extends Controller
     {
         try{
         $customer = Customer::find($id);
-        $customer ->delete();
+        $customer ->isdelete = 1;
+        $customer ->save();
         }catch(\Exception $e){
             return redirect()->route('customer.index')->with('Fail','Xóa không thành công');
         }

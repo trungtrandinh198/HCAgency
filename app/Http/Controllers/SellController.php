@@ -27,7 +27,7 @@ class SellController extends Controller
      */
 	public function index(){
         $products = Product::all();
-        $customers= Customer::all();
+        $customers= Customer::where('isdelete',0)->get();
 		return view('sell.index',compact('products','customers'));
 	}
 
