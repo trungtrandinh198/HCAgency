@@ -24,7 +24,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::where('isdelete',0)->paginate(20);
+        $orders = Order::where('isdelete',0)->orderBy('id', 'DESC')->paginate(20);
         return view('order.index',compact('orders'));
     }
 
@@ -35,6 +35,13 @@ class OrderController extends Controller
         $orderDetails = OrderDetail::where('order_id', $order->id)->get();
         return view('order.detail',compact('order','orderDetails','imageBills'));
     }
+    //hiển thị chi tiết hóa đơn
+    public function updateStatusOrder($id){
+        $order = Order::find($id);
+        $order->status = 1;
+        $order->save();
+        return back();
+    }
     //up file image bill
     public function uploadImage(Request $request){
         $image = $request->select_file;
@@ -42,16 +49,17 @@ class OrderController extends Controller
         if ($image == null) {
             return back();
         }
+        
         $extension = $image -> getClientOriginalExtension();
         $namefile = $orderId.'-'.date('Ymd').Time().rand(11111, 99999).'.'.$extension;
         $image->move('img/bill' ,$namefile);
         $ulr =  'img/bill/'.$namefile;
         try{
-        $img = new ImageBill;
-        $img ->file_name = $namefile;
-        $img ->order_id =$orderId;
-        $img ->ulr =$ulr;
-        $img ->save();
+            $img = new ImageBill;
+            $img ->file_name = $namefile;
+            $img ->order_id =$orderId;
+            $img ->ulr =$ulr;
+            $img ->save();
         }catch(\Exception $e){
             
         }

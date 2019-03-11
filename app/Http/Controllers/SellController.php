@@ -69,8 +69,8 @@ class SellController extends Controller
         return $link;
     }
     public function printBill($id){
-        $order = Order::find($id);
+        $order = Order::find($id); 
         $orderDetails= OrderDetail::where('order_id',$id)->get();
-        return view('sell.printBill',compact('order','orderDetails'));
+        return view('sell.printbill',compact('order','orderDetails'));
     }
 }
