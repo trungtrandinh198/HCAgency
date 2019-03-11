@@ -6,10 +6,18 @@
         <a href="{{ URL::route('order.index') }}">Hóa đơn</a>
     </li>
     <div class="form-inline ml-auto">
-		<a class="btn btn-info btn-sm" target="_blank" href="{{ URL::route('sell.printBill',['id' => $order->id])}}">
+    	@if($order ->status == '0')
+    	<a class="btn btn-success btn-sm" href="{{ URL::route('order.updateStatusOrder',['id' => $order->id])}}">
+ 			Xác nhận thanh toán
+    	</a>
+    	@endif
+    	<div style="margin-left: 5px">
+    		<a class="btn btn-info btn-sm" target="_blank" href="{{ URL::route('sell.printBill',['id' => $order->id])}}">
 		<i class="fas fa-print"></i>
 		 In hóa đơn
 	</a>
+    	</div>
+		
     </div>
 </ol>
 <div class="row">
@@ -44,8 +52,8 @@
     	@csrf
 	    	<div>Cập nhập ảnh hóa đơn</div>
 	    	<input type="hidden" name="order_id" value="{{$order->id}}">
-	       	<input type="file" class="btn-sm" name="select_file">
-	       	<input type="submit" name="upload" class="btn btn-primary btn-sm" value="Tải hóa đơn lên">
+	       	<input type="file" class="btn-sm" name="select_file" style="max-width: 75%">
+	       	<input type="submit" name="upload" class="btn btn-primary btn-sm" value="Tải lên">
    		</form>
 	</div>
 	<div class="col-sm-6" align="right">

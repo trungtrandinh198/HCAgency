@@ -33,6 +33,8 @@ Route::group(['prefix'=>'order','as' => 'order.'],function(){
 	Route::get('/order-detail/{id}', 'OrderController@showOrder')->name('showOrder');
 
 	Route::post('/uploadImage','OrderController@uploadImage')->name('uploadImage');
+
+	Route::get('/updateStatusOrder/{id}','OrderController@updateStatusOrder')->name('updateStatusOrder');
 });
 //route về sản phẩm
 Route::group(['prefix'=>'product','as' => 'product.'],function(){

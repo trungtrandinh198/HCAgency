@@ -27,12 +27,11 @@ function addProduct(element){
 	$("#tbody-cart").append(htmlAddProductCart(id,name,sum));
 	totalOrder();
 }
+
 function deleteProduct(element){
 	$(element).parent().parent().remove();
 	totalOrder();
 }
-
-
 
 function htmlAddProductCart(id,name,price){
 	var html = 
@@ -82,9 +81,6 @@ function saveOrder(){
       	quantity =  $(element).find('input[name=quantity]').val();
       	item[id] = quantity;
       	data.push(item);
-    
-    
-       
     });
     $.ajaxSetup({
 	    headers: {
@@ -108,6 +104,7 @@ function saveOrder(){
         }
     });
 }
+
 function backHome() {  
 	history.back();
 }
